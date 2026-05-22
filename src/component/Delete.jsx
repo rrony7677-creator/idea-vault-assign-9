@@ -5,7 +5,7 @@ import { BiTrash } from "react-icons/bi";
 
 export function Delete({_id}) {
     const handleDelete = async()=>{
-    const res =await fetch(`http://localhost:8000/idea/${_id}`,{
+    const res =await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/idea/${_id}`,{
         method:'DELETE',
             headers:{
             'content-type' :'application/json'

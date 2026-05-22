@@ -12,7 +12,7 @@ const CommentSection = ({ ideaId, currentUser }) => {
   
   const fetchComments = async () => {
     try {
-      const res = await fetch(`http://localhost:8000/comments/${ideaId}`);
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/comments/${ideaId}`);
       const data = await res.json();
       setComments(data);
     } catch (error) {
@@ -43,7 +43,7 @@ const CommentSection = ({ ideaId, currentUser }) => {
     };
 
     try {
-      const res = await fetch('http://localhost:8000/comment', {
+      const res = await fetch('${process.env.NEXT_PUBLIC_SERVER_URL}/comment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(commentData)
@@ -62,7 +62,7 @@ const CommentSection = ({ ideaId, currentUser }) => {
   const handleDeleteComment = async (id) => {
     if (!window.confirm("Are you sure you want to delete this comment?")) return;
     try {
-      const res = await fetch(`http://localhost:8000/comment/${id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/comment/${id}`, {
         method: 'DELETE'
       });
       if (res.ok) {
@@ -77,7 +77,7 @@ const CommentSection = ({ ideaId, currentUser }) => {
   
   const handleEditSubmit = async (id) => {
     try {
-      const res = await fetch(`http://localhost:8000/comment/${id}`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/comment/${id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ updatedText: editText })

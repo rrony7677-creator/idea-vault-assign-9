@@ -12,7 +12,7 @@ const DetailsIdea =async ({params}) => {
     })
     console.log(token);
 
-    const res = await fetch(`http://localhost:8000/idea/${id}`,{
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/idea/${id}`,{
     headers:{
         authorization:`Bearer ${token}`
     }

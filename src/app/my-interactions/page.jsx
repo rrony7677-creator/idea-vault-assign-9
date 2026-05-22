@@ -16,7 +16,7 @@ const MyInteractions = () => {
       if (!currentUser?.email) return;
 
       try {
-        const res = await fetch(`http://localhost:8000/user-interactions/${currentUser.email}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/user-interactions/${currentUser.email}`);
         if (res.ok) {
           const data = await res.json();
           setInteractions(data);

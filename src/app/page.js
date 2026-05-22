@@ -5,7 +5,7 @@ import IdeaCard from "@/component/IdeaCard";
 import Image from "next/image";
 
 export default async function  Home () {
-    const res = await fetch('http://localhost:8000/idea')
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/idea`)
     const ideas = await res.json();
     const newIdea = ideas.slice(0,3)
   return (

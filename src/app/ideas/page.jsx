@@ -10,7 +10,7 @@ const [selectCategory,setSelectCategory] = useState("all");
 
 useEffect(()=>{
     const fetchData = async ()=>{
-    const res = await fetch('http://localhost:8000/idea')
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/idea`)
     const data = await res.json();
     setIdeas(data);
     }
